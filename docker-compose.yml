@@ -3,11 +3,26 @@
 version: '3.4'
 
 services:
-  projectbackend:
-    image: projectbackend
+  db:
+    # image: "mcr.microsoft.com/mssql/server"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      SA_PASSWORD: "Thib@ult"
+      ACCEPT_EULA: "Y"
+    ports: 
+      - 1433:1433 
+    volumes: 
+        - ./data:/var/opt/mssql/data
+  api:
+    image: projectbackenddevelopment
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment: 
+      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_ENVIRONMENT=Docker
     ports:
-      - 5000
-      - 5001
+      - "5000:5000"
+      - "5001:5000"
+    depends_on: 
+      - db
