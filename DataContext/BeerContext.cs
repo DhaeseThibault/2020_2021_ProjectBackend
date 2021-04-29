@@ -41,6 +41,9 @@ namespace ProjectBackend.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BeerUser>()
+                   .HasKey(cs => new { cs.BeerId , cs.UserId });
+
             modelBuilder.Entity<Brewer>().HasData(new Brewer(){
                 BrewerId = 1,
                 Name = "AB InBev",
@@ -62,7 +65,7 @@ namespace ProjectBackend.DataContext
             });
 
             modelBuilder.Entity<Beer>().HasData(new Beer(){
-                BeerId = Guid.NewGuid(), 
+                BeerId = 1, 
                 Name = "Stella Artois", 
                 Percentage = "5.2",
                 Origin = "Leuven",
@@ -70,7 +73,7 @@ namespace ProjectBackend.DataContext
                 BrewerId = 1
             });
             modelBuilder.Entity<Beer>().HasData(new Beer(){
-                BeerId = Guid.NewGuid(), 
+                BeerId = 2, 
                 Name = "Jupiler", 
                 Percentage = "5.2",
                 Origin = "Jupille-sur-Meuse",
@@ -78,12 +81,44 @@ namespace ProjectBackend.DataContext
                 BrewerId = 2
             });
             modelBuilder.Entity<Beer>().HasData(new Beer(){
-                BeerId = Guid.NewGuid(),  
+                BeerId = 3,  
                 Name = "Heineken", 
                 Percentage = "5",
                 Origin = "Amsterdam",
                 BitternessId = 1,
                 BrewerId = 1            // nog aanpassen
+            });
+
+            modelBuilder.Entity<User>().HasData(new User(){
+                UserId = 1,
+                Name = "D'Haese",
+                Firstname = "Thibault"
+            });
+            modelBuilder.Entity<User>().HasData(new User(){
+                UserId = 2,
+                Name = "Claeys",
+                Firstname = "Robin"
+            });
+            modelBuilder.Entity<User>().HasData(new User(){
+                UserId = 3,
+                Name = "Onderbeke",
+                Firstname = "Niels",
+            });
+
+            modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
+                BeerUserId = Guid.NewGuid(),
+                BeerId = 1,
+                UserId = 1
+            });
+            modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
+                BeerUserId = Guid.NewGuid(),
+                BeerId = 2,
+                UserId = 1
+            });
+            modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
+                BeerUserId = Guid.NewGuid(),
+                BeerId = 3,
+                UserId = 1
             });
         }
     }

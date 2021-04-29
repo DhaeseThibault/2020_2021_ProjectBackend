@@ -8,7 +8,7 @@ namespace ProjectBackend.Models
 {
     public class Beer
     {
-        public Guid BeerId { get; set; }
+        public int BeerId { get; set; }
         public string Name { get; set; }
         public string Percentage { get; set; }
         public string Origin { get; set; }   
@@ -21,6 +21,5 @@ namespace ProjectBackend.Models
 
         [JsonIgnore]
         public List<BeerUser> BeerUser { get; set; }
-
     }
 }

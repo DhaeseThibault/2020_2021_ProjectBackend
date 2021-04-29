@@ -10,7 +10,7 @@ using ProjectBackend.DataContext;
 namespace ProjectBackend.Migrations
 {
     [DbContext(typeof(BeerContext))]
-    [Migration("20210429165808_first")]
+    [Migration("20210429185754_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,10 @@ namespace ProjectBackend.Migrations
 
             modelBuilder.Entity("ProjectBackend.Models.Beer", b =>
                 {
-                    b.Property<Guid>("BeerId")
+                    b.Property<int>("BeerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("BitternessId")
                         .HasColumnType("int");
@@ -53,7 +54,7 @@ namespace ProjectBackend.Migrations
                     b.HasData(
                         new
                         {
-                            BeerId = new Guid("a479f7b7-e969-4a5c-b4ff-eb09b934427e"),
+                            BeerId = 1,
                             BitternessId = 1,
                             BrewerId = 1,
                             Name = "Stella Artois",
@@ -62,7 +63,7 @@ namespace ProjectBackend.Migrations
                         },
                         new
                         {
-                            BeerId = new Guid("6f92eca8-e714-4e40-9fe0-9598b2e82b93"),
+                            BeerId = 2,
                             BitternessId = 2,
                             BrewerId = 2,
                             Name = "Jupiler",
@@ -71,12 +72,50 @@ namespace ProjectBackend.Migrations
                         },
                         new
                         {
-                            BeerId = new Guid("3c9c62b4-10c5-4fe2-b31e-efe4177d0ac1"),
+                            BeerId = 3,
                             BitternessId = 1,
                             BrewerId = 1,
                             Name = "Heineken",
                             Origin = "Amsterdam",
                             Percentage = "5"
+                        });
+                });
+
+            modelBuilder.Entity("ProjectBackend.Models.BeerUser", b =>
+                {
+                    b.Property<int>("BeerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("BeerUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("BeerId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BeerUser");
+
+                    b.HasData(
+                        new
+                        {
+                            BeerId = 1,
+                            UserId = 1,
+                            BeerUserId = new Guid("b5e82d11-a5f8-425d-b3c2-dda710fbdcbb")
+                        },
+                        new
+                        {
+                            BeerId = 2,
+                            UserId = 1,
+                            BeerUserId = new Guid("4cf44a0a-397d-4dcd-a556-cf7ca4fe7919")
+                        },
+                        new
+                        {
+                            BeerId = 3,
+                            UserId = 1,
+                            BeerUserId = new Guid("f7c22c1b-f740-45b3-b77d-5f884aae7f63")
                         });
                 });
 
@@ -139,6 +178,44 @@ namespace ProjectBackend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ProjectBackend.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Firstname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Firstname = "Thibault",
+                            Name = "D'Haese"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Firstname = "Robin",
+                            Name = "Claeys"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Firstname = "Niels",
+                            Name = "Onderbeke"
+                        });
+                });
+
             modelBuilder.Entity("ProjectBackend.Models.Beer", b =>
                 {
                     b.HasOne("ProjectBackend.Models.Bitterness", "Bitterness")
@@ -158,6 +235,30 @@ namespace ProjectBackend.Migrations
                     b.Navigation("Brewer");
                 });
 
+            modelBuilder.Entity("ProjectBackend.Models.BeerUser", b =>
+                {
+                    b.HasOne("ProjectBackend.Models.Beer", "Beer")
+                        .WithMany("BeerUser")
+                        .HasForeignKey("BeerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectBackend.Models.User", "User")
+                        .WithMany("BeerUser")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Beer");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProjectBackend.Models.Beer", b =>
+                {
+                    b.Navigation("BeerUser");
+                });
+
             modelBuilder.Entity("ProjectBackend.Models.Bitterness", b =>
                 {
                     b.Navigation("Beer");
@@ -166,6 +267,11 @@ namespace ProjectBackend.Migrations
             modelBuilder.Entity("ProjectBackend.Models.Brewer", b =>
                 {
                     b.Navigation("Beer");
+                });
+
+            modelBuilder.Entity("ProjectBackend.Models.User", b =>
+                {
+                    b.Navigation("BeerUser");
                 });
 #pragma warning restore 612, 618
         }
