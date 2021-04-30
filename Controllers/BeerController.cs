@@ -1,8 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 // using ProjectBackend.DataContext;
 using ProjectBackend.DTO;
 using ProjectBackend.Models;
@@ -65,8 +67,35 @@ namespace ProjectBackend.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("users")]
+        public async Task<ActionResult<List<User>>> GetUsers()
+        {
+            try
+            {
+                return new OkObjectResult(await _beerService.GetUsers());
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
-        
+        [HttpPost]
+        [Route("beers")]
+        public async Task<ActionResult<BeerDTO>> AddBeer(BeerDTO beer)
+        {
+            try
+            {
+                return new OkObjectResult(await _beerService.AddBeer(beer));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
