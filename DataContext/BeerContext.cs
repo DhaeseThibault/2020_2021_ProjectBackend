@@ -18,6 +18,7 @@ namespace ProjectBackend.DataContext
         DbSet<Brewer> Brewers { get; set; }
         DbSet<Beer> Beers { get; set; }
         DbSet<BeerUser> BeerUsers { get; set; }
+        DbSet<User> Users { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
@@ -28,6 +29,7 @@ namespace ProjectBackend.DataContext
         public DbSet<Bitterness> Bitternesss { get; set; }
         public DbSet<Beer> Beers { get; set; }
         public DbSet<BeerUser> BeerUsers { get; set; }
+        public DbSet<User> Users { get; set; }
 
         private ConnectionStrings _connectionStrings;
 

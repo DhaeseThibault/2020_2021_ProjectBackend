@@ -31,12 +31,9 @@ namespace ProjectBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup));
-            
+            services.AddAutoMapper(typeof(Startup));            
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
-
             services.AddDbContext<BeerContext>();
-
             services.AddControllers();
             
             services.AddSwaggerGen(c =>
@@ -46,6 +43,8 @@ namespace ProjectBackend
 
             services.AddTransient<IBeerContext, BeerContext>();
             services.AddTransient<IBrewerRepository, BrewerRepository>();
+            services.AddTransient<IBeerRepository, BeerRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddTransient<IBeerService, BeerService>();
         }

@@ -1,10 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
-using ProjectBackend.DataContext;
+
 using ProjectBackend.Models;
+using ProjectBackend.DataContext;
 
 namespace ProjectBackend.Repositories
 {
@@ -12,6 +14,7 @@ namespace ProjectBackend.Repositories
     {
         Task<List<Beer>> GetBeers();
         Task<Beer> GetBeer(int beerId);
+        Task<Beer> AddBeer(Beer beer);
     }
 
     public class BeerRepository : IBeerRepository
@@ -30,6 +33,13 @@ namespace ProjectBackend.Repositories
         public async Task<Beer> GetBeer(int beerId)
         {
             return await _context.Beers.Where(b => b.BeerId == beerId).Include(b => b.Bitterness).Include(b => b.BeerUser).ThenInclude(b => b.User).SingleOrDefaultAsync();
+        }
+
+        public async Task<Beer> AddBeer(Beer beer)
+        {
+            await _context.Beers.AddAsync(beer);
+            await _context.SaveChangesAsync();
+            return beer;
         }
     }
 }
