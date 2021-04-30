@@ -24,7 +24,7 @@ namespace ProjectBackend.Controllers
 
 
         [HttpGet]
-        [Route("brewers")]
+        [Route("brewers")]  
         public async Task<ActionResult<List<BrewerDTO>>> GetBrewers()
         {
             try
@@ -35,7 +35,8 @@ namespace ProjectBackend.Controllers
             {
                 throw ex;
             }
-        }        
+        }    
+
 
         
     }

@@ -23,7 +23,15 @@ namespace ProjectBackend.Repositories
 
         public async Task<List<Brewer>> GetBrewers()
         {
-            return await _context.Brewer.ToListAsync();
+            try
+            {
+                return await _context.Brewers.ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

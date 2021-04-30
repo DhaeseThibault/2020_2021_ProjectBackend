@@ -14,18 +14,20 @@ namespace ProjectBackend.DataContext
 {
     public interface IBeerContext
     {
-        DbSet<Bitterness> Bitterness { get; set; }
-        DbSet<Brewer> Brewer { get; set; }
-        DbSet<Beer> Beer { get; set; }
+        DbSet<Bitterness> Bitternesss { get; set; }
+        DbSet<Brewer> Brewers { get; set; }
+        DbSet<Beer> Beers { get; set; }
+        DbSet<BeerUser> BeerUsers { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 
     public class BeerContext : DbContext, IBeerContext
     {
-        public DbSet<Brewer> Brewer { get; set; }
-        public DbSet<Bitterness> Bitterness { get; set; }
-        public DbSet<Beer> Beer { get; set; }
+        public DbSet<Brewer> Brewers { get; set; }
+        public DbSet<Bitterness> Bitternesss { get; set; }
+        public DbSet<Beer> Beers { get; set; }
+        public DbSet<BeerUser> BeerUsers { get; set; }
 
         private ConnectionStrings _connectionStrings;
 
@@ -41,8 +43,7 @@ namespace ProjectBackend.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BeerUser>()
-                   .HasKey(cs => new { cs.BeerId , cs.UserId });
+            modelBuilder.Entity<BeerUser>().HasKey(bu => new {bu.BeerId, bu.UserId});
 
             modelBuilder.Entity<Brewer>().HasData(new Brewer(){
                 BrewerId = 1,
@@ -106,17 +107,14 @@ namespace ProjectBackend.DataContext
             });
 
             modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
-                BeerUserId = Guid.NewGuid(),
                 BeerId = 1,
                 UserId = 1
             });
             modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
-                BeerUserId = Guid.NewGuid(),
                 BeerId = 2,
                 UserId = 1
             });
             modelBuilder.Entity<BeerUser>().HasData(new BeerUser(){
-                BeerUserId = Guid.NewGuid(),
                 BeerId = 3,
                 UserId = 1
             });
