@@ -76,6 +76,7 @@ namespace ProjectBackend.Services
                 throw ex;
             }
         }
+        
         public async Task<List<UserDTO>> GetUsers()
         {
             return _mapper.Map<List<UserDTO>>(await _userRepository.GetUsers());

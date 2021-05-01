@@ -9,6 +9,8 @@ namespace ProjectBackend.DTO
         public AutoMapping()
         {
             CreateMap<Brewer, BrewerDTO>();
+            CreateMap<BeerDTO,Beer>();
+            CreateMap<UserDTO,User>();
         }
     }
 }

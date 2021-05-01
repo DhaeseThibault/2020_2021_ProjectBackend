@@ -26,7 +26,7 @@ namespace ProjectBackend.Controllers
             _beerService = beerService;
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         [Route("brewers")]  
         public async Task<ActionResult<List<BrewerDTO>>> GetBrewers()
@@ -41,6 +41,7 @@ namespace ProjectBackend.Controllers
             }
         }    
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("beers")]
         public async Task<ActionResult<List<Beer>>> GetBeers()
@@ -55,6 +56,7 @@ namespace ProjectBackend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("beer/{BeerId}")]
         public async Task<ActionResult<List<Beer>>> GetBeer(int beerId)
@@ -69,6 +71,7 @@ namespace ProjectBackend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("users")]
         public async Task<ActionResult<List<User>>> GetUsers()
@@ -98,6 +101,5 @@ namespace ProjectBackend.Controllers
                 throw ex;
             }
         }
-
     }
 }

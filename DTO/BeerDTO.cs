@@ -11,7 +11,7 @@ namespace ProjectBackend.DTO
         public string Origin { get; set; }
         public int BitternessId { get; set; }
         public int BrewerId { get; set; }
-        public List<int> Users { get; set; }
+        // public List<int> Users { get; set; }
 
     }
 }
