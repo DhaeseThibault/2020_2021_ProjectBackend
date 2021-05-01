@@ -14,7 +14,7 @@ services:
     volumes: 
         - ./data:/var/opt/mssql/data
   api:
-    image: projectbackenddevelopment
+    image: projectbackend
     build:
       context: .
       dockerfile: ./Dockerfile

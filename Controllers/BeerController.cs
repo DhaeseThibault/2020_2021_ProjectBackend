@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 // using ProjectBackend.DataContext;
 using ProjectBackend.DTO;
@@ -12,6 +13,7 @@ using ProjectBackend.Services;
 
 namespace ProjectBackend.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     public class BeerController : ControllerBase

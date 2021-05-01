@@ -16,6 +16,7 @@ using ProjectBackend.DataContext;
 using ProjectBackend.Repositories;
 using ProjectBackend.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ProjectBackend
 {
@@ -36,6 +37,16 @@ namespace ProjectBackend
             services.AddDbContext<BeerContext>();
             services.AddControllers();
             
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://dev-i7hlcwhn.eu.auth0.com/";
+                options.Audience = "https://beerApiProject";
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjectBackend", Version = "v1" });
@@ -61,8 +72,9 @@ namespace ProjectBackend
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
 
+            app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

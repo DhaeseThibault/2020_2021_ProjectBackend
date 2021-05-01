@@ -38,7 +38,7 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.1": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.7.1"
@@ -1640,10 +1640,10 @@
         "logo.png"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.1": {
-      "sha512": "BGCA7V2+x6gjzZcOLfn1UYTicTBbK1kMVsoV56qiVc2+zpdEc62YPbLCC7jBUpjCeS9w/5FkGMkjvtwCarH7hg==",
+    "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.5": {
+      "sha512": "wivdSSc+S+bNIWj/nUlpfNnpTnj5O+33NqXKiDlHFYaO2J6whRqNsGXlJ+UViKUzKMIDvj4K67W+dmVywUyXiw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/5.0.1",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/5.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1651,7 +1651,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
         "lib/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.5.0.5.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
@@ -5918,7 +5918,7 @@
     "net5.0": [
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.1",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.5",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.1",
       "Microsoft.AspNetCore.Mvc.Versioning >= 5.0.0-preview.2",
       "Microsoft.Azure.Storage.Blob >= 11.2.2",
@@ -5982,7 +5982,7 @@
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
-            "version": "[5.0.1, )",
+            "version": "[5.0.5, )",
             "noWarn": [
               "NU1605"
             ]

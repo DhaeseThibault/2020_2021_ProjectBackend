@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "oW5sZGBfhIyKlXwwejhlJICb6xIOTWQufIokqXmzOTxU0FRlksHcb+WIOL0AemQlJYZ7x4+SXLmkvRCg7nqx3g==",
+  "dgSpecHash": "nI8AMkn3+ic+FTKQ8TFkE87hJSjdJ3wKKD1ZLcF0bEIZvlugRIviPLspaemWgD0PSl9oEEeyuJEGeISvQMoyyQ==",
   "success": true,
   "projectFilePath": "D:\\BackendDevelopment\\Ex\\ProjectBackend\\ProjectBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\thibault.dhaese\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
+    "C:\\Users\\thibault.dhaese\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.5\\microsoft.aspnetcore.authentication.jwtbearer.5.0.5.nupkg.sha512",
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.1\\microsoft.aspnetcore.authentication.openidconnect.5.0.1.nupkg.sha512",
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0-preview.2\\microsoft.aspnetcore.mvc.versioning.5.0.0-preview.2.nupkg.sha512",
     "C:\\Users\\thibault.dhaese\\.nuget\\packages\\microsoft.azure.keyvault.core\\2.0.4\\microsoft.azure.keyvault.core.2.0.4.nupkg.sha512",
